@@ -3,11 +3,12 @@
 }
 
 header {
-  height: 80px;
   display: grid;
-  grid-template-columns: 160px auto 160px;
+  grid-template-columns: 20px auto 160px;
   grid-template-areas: "left-side title login-info";
   background-color: var(--primary-color);
+  padding: 0 20px;
+  grid-area: header;
 
 }
 
@@ -18,54 +19,168 @@ h1 {
   margin-bottom: auto;
 }
 
-/* SIGN IN STARTS */
-
-.sign-in-container {
-  grid-area: login-info;
-  display: flex;
-  justify-content: space-around;
-  height: 100%;
-  align-items: center;
+button {
+  border-radius: 5px;
+  border-style: none;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 6px 12px;
+  font-size: 16px;
+  cursor:pointer;
 }
 
-.sign-in-img {
+/* USER INFO START */
+
+.user-info-container {
+  grid-area: login-info;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.user-info-img {
   height: 60px;
   width: 60px;
   border-radius: 50%;
   background-color: white;
+  margin-left: 10px;
+}
+
+.user-info-name {
+  background: none;
+  color: white;
+  border: none;
+  appearance: none;
+  text-align: right;
+  margin: 0;
+}
+
+.user-info-logout {
+  background: none;
+  padding: 0;
+  font-style: italic;
+  font-size: 14px;
+}
+
+/* USER INFO ENDS  */
+/* SIGN IN STARTS */
+
+.sign-in-container {
+  position:  absolute;
+  background: white;
+  left: 50%;
+  margin-left: -200px;
+  top: 150px;
+  width: 400px;
+  border: 2px solid grey;
+  border-radius: 20px;
+  z-index: 3;
+}
+
+.sign-in-container h2, .sign-in-container h4 {
+  margin: 5px;
+}
+
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.sign-in-select {
+  margin-bottom: 15px;
+}
+
+.sign-in-user {
+  width: 80%;
+  background-color: #EEEEEE;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.sign-in-user-photo {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: lightgrey;
+}
+
+.sign-in-user-text {
+  margin: 5px 0px;
 }
 
 /* SIGN IN ENDS */
 
+.game-board {
+  grid-area: gameboard;
+}
+/* WOULD YOU RATHER CARD START */
+.wyr-card{
+  width: 600px;
+  height: 400px;
+  position: relative;
+  border-radius: 20px;
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.wyr-card h2 {
+  position: absolute;
+  left: 60px;
+  top: 40px;
+  margin: 0;
+}
+
+.wyr-card-button {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  background: white;
+  color: black;
+  border-radius: 15px;
+  font-size: 20px;
+}
+
+.wyr-card-button-selected{
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 24px;
+}
+
+.submit-answer-container {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.submit-answer-button {
+  background: white;
+  color: black;
+  margin-left: 15px;
+  border: 1px solid black;
+}
+
+/* WOULD YOU RATHER CARD ENDS  */
+
+
 .App {
   text-align: center;
+  display: grid;
+  grid-template-rows: 80px 1fr;
+  grid-template-columns: 1fr 600px 1fr;
+  grid-template-areas:
+    "header header header"
+    "gutterL gameboard gutterR";
+  grid-row-gap: 50px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
