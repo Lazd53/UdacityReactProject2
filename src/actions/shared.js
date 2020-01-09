@@ -6,7 +6,8 @@ function receiveData (users, questions){
   return {
     type: RECEIVE_DATA,
     users,
-    questions
+    questions,
+    loading: false
   }
 }
 
@@ -16,7 +17,7 @@ export function handleInitialData () {
       _getUsers(),
       _getQuestions()
     ]).then(([users, questions]) => {
-      dispatch(receiveData(users, questions))
+      dispatch(receiveData(users, questions));
     })
   }
 }

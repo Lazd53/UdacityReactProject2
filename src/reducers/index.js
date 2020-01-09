@@ -7,5 +7,6 @@ import {users, authdUser} from './users';
 export default combineReducers({
   questions,
   users,
-  authdUser
+  authdUser,
+  loading
 })

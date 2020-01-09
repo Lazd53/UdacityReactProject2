@@ -44,7 +44,7 @@ class SignIn extends React.Component {
             onClick={ (e) => {
               e.preventDefault();
               this.setAuthdUser(this.state.authedUser)
-            }}> 
+            }}>
             Sign In
           </button>
         </form>
