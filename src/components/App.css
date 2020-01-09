@@ -29,6 +29,14 @@ button {
   cursor:pointer;
 }
 
+/* LOAD SCREEN STARTS */
+.load-screen{
+  border: solid 1px black;
+  border-radius: 15px;
+  padding: 30px 15px;
+}
+/* LOAD SCREEN ENDS */
+
 /* USER INFO START */
 
 .user-info-container {
@@ -66,7 +74,7 @@ button {
 /* USER INFO ENDS  */
 /* SIGN IN STARTS */
 
-.sign-in-container {
+.sign-in-container, .loading-container {
   position:  absolute;
   background: white;
   left: 50%;

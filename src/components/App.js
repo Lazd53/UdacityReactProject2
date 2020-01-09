@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom'
+
 import './App.css';
-import SignIn from './SignIn';
 import UserInfo from './UserInfo';
 import GameBoard from './GameBoard';
+import LoadAndAuth from './LoadAndAuth';
+
 import { handleInitialData } from '../actions/shared';
 import { setLoading } from '../actions/loading';
 
 
 class App extends React.Component {
-  state={loading: true}
   componentDidMount(){
     const { dispatch } = this.props;
     dispatch(setLoading())
@@ -19,27 +20,25 @@ class App extends React.Component {
 
 
   render (){
+    let {loading, authdUser} = this.props;
     return (
       <div className="App">
         <header>
           <h1>WOULD YOU RATHER??</h1>
           <UserInfo/>
         </header>
-        <Switch>
-          <Route
-            path="/"
-            component={SignIn}
-          ></Route>
-        </Switch>
-        {this.props.authdUser === false && <SignIn/>}
-        <GameBoard/>
+        { authdUser && loading === false ?
+          <GameBoard/>:
+          <LoadAndAuth loading={loading}/>
+        }
       </div>
     );
   }
 
 }
 
-export default connect((state)=>(
+export default connect((store)=>(
   {
-    authdUser: state.authdUser
+    authdUser: store.authdUser,
+    loading: store.loading
   }))(App);
