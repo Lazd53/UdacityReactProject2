@@ -160,6 +160,10 @@ button {
   font-size: 20px;
 }
 
+.wyr-card-button::first-letter {
+  text-transform: capitalize;
+}
+
 .wyr-card-button-selected{
   background-color: var(--primary-color);
   color: white;

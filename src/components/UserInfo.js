@@ -16,6 +16,7 @@ class UserInfo extends React.Component {
         <img
           className="user-info-img"
           src={authdUser.avatarURL}
+          alt={authdUser.name}
         />
       </div>
     )

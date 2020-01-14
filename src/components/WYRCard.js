@@ -14,11 +14,11 @@ class WYRCard extends React.Component{
 
   render(){
     let { currentQuestion } = this.props
-    console.log(currentQuestion)
+    console.log(currentQuestion);
     return(
       <div className="wyr-card">
         <h2>Would you rather...?</h2>
-        {currentQuestion !== null &&
+        {(currentQuestion.id !== undefined && currentQuestion.id !== null) &&
           <div className="wyr-card-buttons">
             <button
               className = {this.state.choice === "optionOne" ?
@@ -34,7 +34,7 @@ class WYRCard extends React.Component{
                           "wyr-card-button"}
               onClick={ ()=> this.chooseOption("optionTwo")}
             >
-              {currentQuestion.optionOne.text}
+              {currentQuestion.optionTwo.text}
             </button>
           </div>
         }

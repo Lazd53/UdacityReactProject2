@@ -5,7 +5,7 @@ const SignInUser = ({user}) => {
   return (
     <div className="sign-in-user">
       <h3>{user.name}</h3>
-      <img className="sign-in-user-photo" src={user.avatarURL} />
+      <img className="sign-in-user-photo" src={user.avatarURL} alt={user.name} />
       <p className="sign-in-user-text"> {
         user.answers.length===0 ?
         "Hasn't started answering any questions," :
