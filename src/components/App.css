@@ -59,7 +59,6 @@ button {
   background: none;
   color: white;
   border: none;
-  appearance: none;
   text-align: right;
   margin: 0;
 }
@@ -69,6 +68,7 @@ button {
   padding: 0;
   font-style: italic;
   font-size: 14px;
+  text-align: right;
 }
 
 /* USER INFO ENDS  */
@@ -127,14 +127,14 @@ button {
 }
 /* WOULD YOU RATHER CARD START */
 .wyr-card{
-  width: 600px;
   height: 400px;
   position: relative;
   border-radius: 20px;
   border: 2px solid black;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .wyr-card h2 {
@@ -142,6 +142,12 @@ button {
   left: 60px;
   top: 40px;
   margin: 0;
+}
+
+.wyr-card-buttons{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
 .wyr-card-button {
@@ -174,8 +180,53 @@ button {
 }
 
 /* WOULD YOU RATHER CARD ENDS  */
+/* QUESTIONS CONTAINER STARTS */
 
+.questions-container {
+  border-radius: 20px;
+  border: 2px solid black;
+  padding: 15px;
+}
 
+.questions-container-buttonsrow{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.questions-container-button {
+  background: none;
+  color: black;
+}
+
+.questions-container-button-selected {
+  background: none;
+  color: var(--primary-color);
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+
+/* QUESTIONS CONTAINER ENDS */
+/* QUESTIONS LIST STARTS */
+.questions-list{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 20px;
+}
+.questions-list-item {
+  color: black;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.questions-list-item::first-letter {
+  text-transform: capitalize;
+}
+
+/* QUESTIONS LIST ENDS */
 .App {
   text-align: center;
   display: grid;

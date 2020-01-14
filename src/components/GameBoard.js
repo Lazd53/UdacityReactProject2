@@ -1,36 +1,37 @@
 import React from 'react';
 import QuestionsScreen from './QuestionsScreen';
-import ResultsScreen from './ResultsScreen';
+import Leaderboard from './Leaderboard';
 import { connect } from 'react-redux';
+import { Link, Route, Switch } from 'react-router-dom';
 
 
 
 class GameBoard extends React.Component {
-  state = {
-    seeQuestions: true,
-    loadedQuestion: null
-  }
-
-  componentDidUpdate(){
-
-  }
-
-  findUnansweredQuestion(){
-  
-  }
 
   render(){
     return (
       <div className="game-board">
         <div className="game-mode-selector">
-          <button>Questions</button>
-          <button>Results</button>
+          <Link to="/">Questions</Link>
+          <Link to="/questions">LeaderBoard</Link>
         </div>
-        {this.state.seeQuestions ?
-          <QuestionsScreen/> :
-          <ResultsScreen/>
-        }
-        <button onClick={()=>console.log(this.props.store)}>Checkit</button>
+        <Switch>
+          <Route
+            path="/questions"
+            component={Leaderboard}
+          >
+          </Route>
+          <Route
+            path="/:id"
+            component={QuestionsScreen}
+          >
+          </Route>
+          <Route
+            path="/"
+            component={QuestionsScreen}
+          >
+          </Route>
+        </Switch>
       </div>
     )
   }

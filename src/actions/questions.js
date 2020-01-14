@@ -19,6 +19,15 @@ export function handleSaveQuestion(question) {
   }
 }
 
-function saveQuestionAnswer (){
-  
+function saveQuestionAnswer (authedUser, qid, answer){
+
+}
+
+export function handleSaveQuestionAnswer ( authedUser, qid, answer){
+  return (dispatch) => {
+    return (_saveQuestionAnswer({authedUser, qid, answer}))
+      .then(() => {
+        dispatch(saveQuestionAnswer( authedUser, qid, answer))
+      })
+  }
 }

@@ -13,25 +13,31 @@ class WYRCard extends React.Component{
   }
 
   render(){
+    let { currentQuestion } = this.props
+    console.log(currentQuestion)
     return(
       <div className="wyr-card">
         <h2>Would you rather...?</h2>
-        <button
-          className = {this.state.choice === "optionOne" ?
-                      "wyr-card-button wyr-card-button-selected" :
-                      "wyr-card-button"}
-          onClick={ ()=> this.chooseOption("optionOne")}
-        >
-          Be an astronaught
-        </button>
-        <button
-          className = {this.state.choice === "optionTwo" ?
-                      "wyr-card-button wyr-card-button-selected" :
-                      "wyr-card-button"}
-          onClick={ ()=> this.chooseOption("optionTwo")}
-        >
-          Option Two
-        </button>
+        {currentQuestion !== null &&
+          <div className="wyr-card-buttons">
+            <button
+              className = {this.state.choice === "optionOne" ?
+                          "wyr-card-button wyr-card-button-selected" :
+                          "wyr-card-button"}
+              onClick={ ()=> this.chooseOption("optionOne")}
+            >
+              {currentQuestion.optionOne.text}
+            </button>
+            <button
+              className = {this.state.choice === "optionTwo" ?
+                          "wyr-card-button wyr-card-button-selected" :
+                          "wyr-card-button"}
+              onClick={ ()=> this.chooseOption("optionTwo")}
+            >
+              {currentQuestion.optionOne.text}
+            </button>
+          </div>
+        }
         <SubmitAnswer choice={this.state.choice}/>
 
       </div>
