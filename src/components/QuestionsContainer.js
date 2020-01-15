@@ -15,15 +15,16 @@ class QuestionsContainer extends React.Component {
   showQuestionsFilter = (questionsFilter) => {
     let {authdUser, questions} = this.props;
     let arrayedQuestions = Object.entries(questions);
+    let arrayedSortedQuestions = arrayedQuestions.sort( (a,b) => (a[1].timestamp < b[1].timestamp) ? 1 : -1)
     let authdUserAnswers = Object.keys(authdUser.answers);
 
     switch(questionsFilter){
       case "unansweredQuestions":
-        return arrayedQuestions.filter( question =>
+        return arrayedSortedQuestions.filter( question =>
           !authdUserAnswers.includes(question[0])
         );
       case "answeredQuestions" :
-        return arrayedQuestions.filter( question =>
+        return arrayedSortedQuestions.filter( question =>
           authdUserAnswers.includes(question[0])
         );
       case "allQuestions" :
