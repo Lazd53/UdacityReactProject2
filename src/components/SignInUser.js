@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SignInUser = ({user}) => {
-  console.log(user.answers)
   return (
     <div className="sign-in-user">
       <h3>{user.name}</h3>

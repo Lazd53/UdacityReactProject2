@@ -24,7 +24,7 @@ class App extends React.Component {
       <div className="App">
         <header>
           <h1>WOULD YOU RATHER??</h1>
-          <UserInfo/>
+          { authdUser && <UserInfo/> }
         </header>
         { authdUser && loading === false ?
           <GameBoard/>:

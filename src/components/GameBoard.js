@@ -17,7 +17,12 @@ class GameBoard extends React.Component {
         </div>
         <Switch>
           <Route
-            path="/questions"
+            path="/questions/:id"
+            component={Leaderboard}
+          >
+          </Route>
+          <Route
+            path="/leaderboard"
             component={Leaderboard}
           >
           </Route>

@@ -57,7 +57,7 @@ class Questions extends React.Component{
     // console.log(currentQuestion)
     return (
       <div>
-          <WYRCard currentQuestion={currentQuestion}/>
+        <WYRCard currentQuestion={currentQuestion}/>
         <QuestionsContainer currentQuestion={currentQuestion}/>
       </div>
     )
