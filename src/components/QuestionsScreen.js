@@ -7,12 +7,12 @@ import { handleSaveQuestionAnswer } from '../actions/shared';
 import WYRCard from './WYRCard';
 import QuestionsContainer from './QuestionsContainer';
 
-class Questions extends React.Component{
+class QuestionsScreen extends React.Component{
   constructor(props){
     super(props);
     this.state = { currentQuestion: null};
     let id = this.props.match.params.id;
-    this.props.match.path === "/:id" ?
+    this.props.match.path === "/questions/:id" ?
       this.state = {currentQuestion: this.setSpecificQuestion(id)} :
       this.state = {currentQuestion: this.setRandomQuestion()};
   }
@@ -54,7 +54,6 @@ class Questions extends React.Component{
 
   render(){
     let {currentQuestion} = this.state
-    // console.log(currentQuestion)
     return (
       <div>
         <WYRCard currentQuestion={currentQuestion}/>
@@ -68,4 +67,4 @@ export default connect((store) => {
   return (
     {questions: store.questions,
     authdUser: store.users[store.authdUser]})
-})(withRouter(Questions))
+})(withRouter(QuestionsScreen))

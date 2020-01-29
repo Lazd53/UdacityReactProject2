@@ -28,7 +28,7 @@ class GameBoard extends React.Component {
           >
           </Route>
           <Route
-            path="/:id"
+            path="/questions/:id"
             component={QuestionsScreen}
           >
           </Route>

@@ -6,7 +6,7 @@ const QuestionsList = ({questions}) => {
   return (
     <div className="questions-list">
       {questions.map( question => {
-        let linkTo = `/${question[0]}`
+        let linkTo = `/questions/${question[0]}`
         return (
           <Link
             className="questions-list-item"
