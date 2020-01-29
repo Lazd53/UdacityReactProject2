@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import QuestionsList from './QuestionsList';
 import QuestionModeButtons from './QuestionModeButtons';
+import { Link } from 'react-router-dom'
 
 
 
@@ -51,15 +52,16 @@ class QuestionsContainer extends React.Component {
           currentMode={this.state.questionsMode}
          />
          <QuestionsList questions={this.showQuestionsFilter(this.state.questionsMode)} />
+         <Link className="questions-add-question" to="/add">Add a Question</Link>
       </div>
     )
   }
 
 }
 
-export default connect( (state) => (
+export default connect( (store) => (
   {
-    questions: state.questions,
-    authdUser: state.authdUser
+    questions: store.questions,
+    authdUser: store.users[store.authdUser]
   }
 ))(QuestionsContainer);

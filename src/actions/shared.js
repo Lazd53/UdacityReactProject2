@@ -1,7 +1,8 @@
-import {_getUsers, _getQuestions, _saveQuestionAnswer} from "../_DATA";
+import {_getUsers, _getQuestions, _saveQuestionAnswer, _saveQuestion} from "../_DATA";
 
 export const RECEIVE_DATA = "RECEIVE_DATA";
 export const SAVE_ANSWER = "SAVE_ANSWER"
+export const ADD_QUESTION = "ADD_QUESTION"
 
 function receiveData (users, questions){
   return {
@@ -32,6 +33,7 @@ function saveQuestionAnswer (authedUser, qid, answer){
   }
 }
 
+
 export function handleSaveQuestionAnswer ( authedUser, qid, answer){
   return (dispatch) => {
     return (_saveQuestionAnswer({authedUser, qid, answer}))
@@ -40,4 +42,22 @@ export function handleSaveQuestionAnswer ( authedUser, qid, answer){
 
       })
   }
+}
+
+function addQuestion (object){
+  return {
+    type: ADD_QUESTION,
+    newQuestion: object,
+    id: object.id,
+    loading: false
+  }
+}
+
+export function handleAddQuestion (author, optionOneText, optionTwoText){
+  return (dispatch) => {
+    return (_saveQuestion({author, optionOneText, optionTwoText}))
+      .then( (returnedObject) => {
+        dispatch(addQuestion(returnedObject)
+      )})
+    }
 }

@@ -6,7 +6,9 @@ export function users (state=[], action) {
     case RECEIVE_DATA :
       return action.users;
     case SAVE_ANSWER :
-      return state[action.authedUser].answers[action.qid]
+      let newState = {...state};
+      newState[action.authedUser].answers[action.qid] = action.answer;
+      return newState;
     default :
       return state;
   }

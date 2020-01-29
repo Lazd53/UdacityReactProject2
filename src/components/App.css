@@ -147,7 +147,9 @@ button {
 .wyr-card-buttons{
   width: 100%;
   display: flex;
+  position: relative;
   justify-content: space-around;
+  align-items: center;
 }
 
 .wyr-card-button {
@@ -229,6 +231,18 @@ button {
 .questions-list-item::first-letter {
   text-transform: capitalize;
 }
+
+.questions-add-question {
+  color: black;
+  text-decoration: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 15px auto 0 auto;
+  width: 150px;
+  display: block;
+}
+
 
 /* QUESTIONS LIST ENDS */
 /* LEADERBOARD STARTS*/
@@ -344,7 +358,21 @@ button {
   font-size: 20px;
 }
 
-/* USER CARD STARTS */
+/* USER CARD ENDS */
+/* ADD QUESTION STARTS */
+
+.add-question-submit{
+  position: absolute;
+  bottom: -60px;
+}
+
+.add-question-input {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 20px;
+  word-wrap: break-word;
+  overflow: hidden;
+}
 
 .App {
   text-align: center;

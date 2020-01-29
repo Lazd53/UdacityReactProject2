@@ -14,7 +14,7 @@ class SignIn extends React.Component {
 
   setAuthdUser = (user) => {
     const {dispatch} = this.props;
-    dispatch(setAuthdUser(user))
+    dispatch(setAuthdUser(user.id))
   }
 
   userContent(){

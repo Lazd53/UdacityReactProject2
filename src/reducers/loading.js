@@ -1,5 +1,6 @@
 import {
-  RECEIVE_DATA
+  RECEIVE_DATA,
+  ADD_QUESTION
 } from '../actions/shared'
 
 import {
@@ -11,6 +12,8 @@ export default function loading ( state = {}, action ) {
     case RECEIVE_DATA :
       return action.loading;
     case LOADING :
+      return action.loading;
+    case ADD_QUESTION :
       return action.loading;
     default :
       return state

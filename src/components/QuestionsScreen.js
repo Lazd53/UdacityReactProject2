@@ -67,5 +67,5 @@ class Questions extends React.Component{
 export default connect((store) => {
   return (
     {questions: store.questions,
-    authdUser: store.authdUser})
+    authdUser: store.users[store.authdUser]})
 })(withRouter(Questions))

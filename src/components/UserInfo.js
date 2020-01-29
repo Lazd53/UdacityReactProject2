@@ -38,5 +38,5 @@ class UserInfo extends React.Component {
 
 export default connect( (store) => (
   {
-    authdUser: store.authdUser
+    authdUser: store.users[store.authdUser]
   }))(UserInfo);

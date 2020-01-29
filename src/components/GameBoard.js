@@ -1,6 +1,7 @@
 import React from 'react';
 import QuestionsScreen from './QuestionsScreen';
 import Leaderboard from './Leaderboard';
+import AddQuestion from './AddQuestion';
 import { connect } from 'react-redux';
 import { Link, Route, Switch } from 'react-router-dom';
 
@@ -17,8 +18,8 @@ class GameBoard extends React.Component {
         </div>
         <Switch>
           <Route
-            path="/questions/:id"
-            component={Leaderboard}
+            path="/add"
+            component={AddQuestion}
           >
           </Route>
           <Route
