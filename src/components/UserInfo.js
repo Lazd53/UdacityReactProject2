@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from "react-redux";
-
-import {signOutUser} from "../actions/users.js"
+import {signOutUser} from "../actions/users.js";
+import user1 from "../userThumbnails/user1.jpg";
+import user2 from "../userThumbnails/user2.jpg";
+import user3 from "../userThumbnails/user3.jpg";
 
 
 class UserInfo extends React.Component {
@@ -13,6 +15,7 @@ class UserInfo extends React.Component {
 
   render(){
     let { authdUser } = this.props;
+    let userImgs = {user1, user2, user3};
     return (
       <div className="user-info-container">
         <div>
@@ -28,7 +31,7 @@ class UserInfo extends React.Component {
         </div>
         <img
           className="user-info-img"
-          src={authdUser.avatarURL}
+          src={userImgs[authdUser.avatarURL]}
           alt={authdUser.name}
         />
       </div>
