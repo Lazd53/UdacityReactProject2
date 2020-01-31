@@ -3,11 +3,18 @@ import { Link, withRouter } from 'react-router-dom';
 
 class GameModeSelector extends React.Component{
   render(){
+    let {pathname} = this.props.location
     return (
       <div className="game-mode-selector">
-        <Link className="game-mode-selector-link" to="/">
-          Questions
-        </Link>
+        { pathname === "/Leaderboard" ?
+          <Link className="game-mode-selector-link" to="/">
+            Questions
+          </Link> :
+          <Link className="game-mode-selector-link" to="#">
+            Questions
+          </Link>
+
+        }
         <Link className="game-mode-selector-link" to="/Leaderboard">
           LeaderBoard
         </Link>
@@ -16,4 +23,4 @@ class GameModeSelector extends React.Component{
   }
 }
 
-export default GameModeSelector;
+export default withRouter(GameModeSelector);

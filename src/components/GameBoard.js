@@ -2,8 +2,9 @@ import React from 'react';
 import QuestionsScreen from './QuestionsScreen';
 import Leaderboard from './Leaderboard';
 import AddQuestion from './AddQuestion';
+import GameModeSelector from './GameModeSelector';
 import { connect } from 'react-redux';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 
 
@@ -12,10 +13,7 @@ class GameBoard extends React.Component {
   render(){
     return (
       <div className="game-board">
-        <div className="game-mode-selector">
-          <Link to="/">Questions</Link>
-          <Link to="/questions">LeaderBoard</Link>
-        </div>
+        <GameModeSelector/>
         <Switch>
           <Route
             path="/add"

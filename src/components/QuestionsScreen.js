@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { handleSaveQuestionAnswer } from '../actions/shared';
+import { setCurrentQuestion } from '../actions/questions';
 
 import WYRCard from './WYRCard';
 import QuestionsContainer from './QuestionsContainer';
@@ -10,19 +11,19 @@ import QuestionsContainer from './QuestionsContainer';
 class QuestionsScreen extends React.Component{
   constructor(props){
     super(props);
-    this.state = { currentQuestion: null};
-    let id = this.props.match.params.id;
-    this.props.match.path === "/questions/:id" ?
-      this.state = {currentQuestion: this.setSpecificQuestion(id)} :
-      this.state = {currentQuestion: this.setRandomQuestion()};
+    if (this.props.currentQuestionID === "" && this.props.match.path === "/") {
+      this.props.dispatch(setCurrentQuestion(this.setRandomQuestion()))
+    } else if (this.props.match.path === "/questions/:id") {
+      this.props.dispatch(setCurrentQuestion(this.props.match.params.id))
+    }
   }
 
   componentDidUpdate(){
     let id = this.props.match.params.id;
-    let currentQuestion = this.state.currentQuestion;
-    if ( currentQuestion.id !== id){
-      this.setState({currentQuestion: this.setSpecificQuestion(id)})
-    }
+    let {currentQuestionID, dispatch} = this.props;
+    id === undefined ?
+      dispatch(setCurrentQuestion(this.setRandomQuestion())) :
+      dispatch(setCurrentQuestion(id))
   }
 
   setRandomQuestion(){
@@ -31,10 +32,11 @@ class QuestionsScreen extends React.Component{
     let unansweredQuestions = questionArray.filter(
       question => !questionsAnswered.includes(question.id))
     let randomVal = Math.floor(Math.random()*unansweredQuestions.length)
-    return unansweredQuestions[randomVal];
+    return unansweredQuestions[randomVal].id;
   }
 
-  setSpecificQuestion = (id) => {
+  setSpecificQuestion = () => {
+    let id = this.props.match.params.id;
     let questionArray = Object.values(this.props.questions)
     return questionArray.find( question => question.id === id);
   }
@@ -53,11 +55,10 @@ class QuestionsScreen extends React.Component{
   }
 
   render(){
-    let {currentQuestion} = this.state
     return (
       <div>
-        <WYRCard currentQuestion={currentQuestion}/>
-        <QuestionsContainer currentQuestion={currentQuestion}/>
+        <WYRCard/>
+        <QuestionsContainer/>
       </div>
     )
   }
@@ -66,5 +67,6 @@ class QuestionsScreen extends React.Component{
 export default connect((store) => {
   return (
     {questions: store.questions,
-    authdUser: store.users[store.authdUser]})
+    authdUser: store.users[store.authdUser],
+    currentQuestionID: store.currentQuestion})
 })(withRouter(QuestionsScreen))

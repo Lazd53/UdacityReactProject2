@@ -11,23 +11,24 @@ class WYRCard extends React.Component{
   }
 
   render(){
-    let { currentQuestion } = this.props
+    console.log(this.props.currentQuestion);
     return(
       <div className="wyr-card">
         <h2>Would you rather...?</h2>
-        {(currentQuestion.id !== undefined && currentQuestion.id !== null) &&
+        {this.props.currentQuestion !== undefined &&
           <div className="wyr-card-buttons">
             <button
               className = "wyr-card-button"
               onClick={ ()=> this.chooseOption("optionOne")}
             >
-              {currentQuestion.optionOne.text}
+              {this.props.currentQuestion.optionOne.text}
             </button>
+            <h3>or</h3>
             <button
               className = "wyr-card-button"
               onClick={ ()=> this.chooseOption("optionTwo")}
             >
-              {currentQuestion.optionTwo.text}
+              {this.props.currentQuestion.optionTwo.text}
             </button>
           </div>
         }
@@ -38,4 +39,7 @@ class WYRCard extends React.Component{
 
 }
 
-export default connect((store) => ({ authdUser: store.authdUser }))(WYRCard);
+export default connect((store) => (
+  { authdUser: store.authdUser ,
+    currentQuestion: store.questions[store.currentQuestion]
+  }))(WYRCard);
