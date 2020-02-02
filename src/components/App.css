@@ -99,6 +99,8 @@ button {
 
 .sign-in-select {
   margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 15px;
 }
 
 .sign-in-user {
@@ -118,6 +120,10 @@ button {
 
 .sign-in-user-text {
   margin: 5px 0px;
+}
+
+.sign-in-form button:disabled {
+  background-color: grey;
 }
 
 /* SIGN IN ENDS */

@@ -5,26 +5,21 @@ import SignInUser from './SignInUser'
 import {setAuthdUser} from '../actions/users';
 
 class SignIn extends React.Component {
+  state={setUser:null}
 
-  state={authedUser:null}
-
-  changeAuthedUser = (user) => {
-    this.setState({authedUser: user[1]})
+  changeSetUser = (user) => {
+    this.setState({setUser: user[1]})
+    console.log(this.state.setUser)
   }
 
   setAuthdUser = (user) => {
     const {dispatch} = this.props;
-    dispatch(setAuthdUser(user.id))
-  }
-
-  userContent(){
-    let users = this.props.users;
-    let entries = Object.entries(users).sort();
-    return entries
+    dispatch(setAuthdUser(user.id));
   }
 
   render(){
-    let users = this.props.users;
+    let {users} = this.props;
+    let {setUser} = this.state;
     return (
       <div className="sign-in-container">
         <h2>SIGN IN</h2>
@@ -32,18 +27,18 @@ class SignIn extends React.Component {
         <form className="sign-in-form">
           {users !== {} &&
             <SelectMenu
-              authUser={this.changeAuthedUser}
-              users={this.userContent()}
+              setUser={this.changeSetUser}
             />
           }
-          {this.state.authedUser !== null &&
-            <SignInUser user={this.state.authedUser}/>
+          {this.state.setUser !== null &&
+            <SignInUser user={setUser}/>
           }
           <button
             type="submit"
+            disabled={ setUser === null }
             onClick={ (e) => {
               e.preventDefault();
-              this.setAuthdUser(this.state.authedUser)
+              this.setAuthdUser(setUser)
             }}>
             Sign In
           </button>
