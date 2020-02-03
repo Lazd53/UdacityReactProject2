@@ -16,7 +16,7 @@ class PlayerList extends React.Component{
 
     return(
       <div className="player-list">
-        {sortedUsers.map( user => (<PlayerCard key={user.id} user={user}/>))}
+        {sortedUsers.map( user => (<PlayerCard key={user.id} user={user} isAuthdUser={user.id === authdUser}/>))}
       </div>
     )
   }
