@@ -1,5 +1,5 @@
 #root {
-  --primary-color: #0A1ECC;
+  --primary-color: #37474f;
 }
 
 header {
@@ -21,12 +21,21 @@ h1 {
 
 button {
   border-radius: 5px;
-  border-style: none;
+  border-style: var(--primary-color) 2px solid;
   background-color: var(--primary-color);
   color: white;
   padding: 6px 12px;
   font-size: 16px;
   cursor:pointer;
+  box-shadow: 2px 2px 2px 2px rgba(180, 180, 180, 0.5);
+}
+
+button:hover, button:focus, .game-mode-selector-link:hover, .game-mode-selector-link:focus, .questions-add-question:hover, .questions-add-question:focus {
+  box-shadow: none;
+  transform: translateY(3px);
+  border-color: #37478f;
+  outline: none;
+
 }
 
 /* LOAD SCREEN STARTS */
@@ -134,14 +143,15 @@ button {
 
 /* GAME MODE START */
 .game-mode-selector {
-  height: 40px;
+  height: 45px;
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .game-mode-selector-link {
+  font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -151,7 +161,7 @@ button {
   box-shadow: 3px 3px 3px 3px rgba(180, 180, 180, 0.5);
   color: black;
   height: 100%;
-  width: 100%;
+
 }
 
 /* GAME MODE END */
@@ -232,23 +242,31 @@ button {
 
 .questions-container-buttonsrow{
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  padding-bottom: 10px;
   border-bottom: 2px solid black;
   margin-bottom: 20px;
 }
 
 .questions-container-button {
-  background: none;
+  border: 2px solid var(--primary-color);
+  border-radius: 20px;
+  background: white;
   color: black;
-  padding-bottom: 10px;
 }
 
 .questions-container-button-selected {
-  background: none;
-  color: var(--primary-color);
-  font-weight: bolder;
-  text-transform: capitalize;
+  background: var(--primary-color);
+  color: white;
+  box-shadow: none;
+  transform: translateY(2px);
+}
+
+.questions-container-button:hover{
+  box-shadow: none;
+  transform: translateY(2px);
 }
 
 /* QUESTIONS CONTAINER ENDS */
