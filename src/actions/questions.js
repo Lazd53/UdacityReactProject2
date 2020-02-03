@@ -1,8 +1,8 @@
-import {_saveQuestion, _saveQuestionAnswer} from "../_DATA";
+import {_saveQuestion } from "../_DATA";
 
 
 export const SAVE_QUESTION = "SAVE_QUESTION";
-export const SET_CURRENT_QUESTION = "SET_CURRENT_QUESTION"
+export const SET_CURRENT_QUESTION = "SET_CURRENT_QUESTION";
 
 function saveQuestion (question) {
   return {
