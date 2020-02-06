@@ -11,47 +11,31 @@ import QuestionsContainer from './QuestionsContainer';
 class QuestionsScreen extends React.Component{
   constructor(props){
     super(props);
-    if (this.props.currentQuestionID === "" && this.props.match.path === "/") {
-      this.props.dispatch(setCurrentQuestion(this.setRandomQuestion()))
-    } else if (this.props.match.path === "/questions/:id") {
-      this.props.dispatch(setCurrentQuestion(this.props.match.params.id))
-    }
+    this.setQuestion();
   }
 
   componentDidUpdate(){
-    let id = this.props.match.params.id;
-    let {currentQuestionID, dispatch} = this.props;
-    id === undefined ?
-      dispatch(setCurrentQuestion(this.setRandomQuestion())) :
-      dispatch(setCurrentQuestion(id))
+    if (this.props.match.params.id !== this.props.currentQuestion){
+      this.setQuestion();
+    }
   }
 
-  setRandomQuestion(){
+  setQuestion=()=>{
+    let {dispatch} = this.props;
+    let pathId = this.props.match.params.id;
+    if (pathId !=="/"){
+      dispatch(setCurrentQuestion(pathId))
+    } else {
+      dispatch(setCurrentQuestion(this.setFirstQuestion()))
+    }
+  }
+
+  setFirstQuestion = () =>{
     let questionArray = Object.values(this.props.questions);
     let questionsAnswered = Object.keys(this.props.authdUser.answers);
     let unansweredQuestions = questionArray.filter(
       question => !questionsAnswered.includes(question.id))
-    let randomVal = Math.floor(Math.random()*unansweredQuestions.length)
-    return unansweredQuestions[randomVal].id;
-  }
-
-  setSpecificQuestion = () => {
-    let id = this.props.match.params.id;
-    let questionArray = Object.values(this.props.questions)
-    return questionArray.find( question => question.id === id);
-  }
-
-  setAnswerAndResults = ( qid, answer) => {
-
-  }
-
-  setAnswerAndRandom = () => {
-
-    this.setRandomQuestion()
-  }
-
-  setAnswer = (qid, answer) =>{
-    this.props.dispatch(handleSaveQuestionAnswer( ))
+    return unansweredQuestions[0].id;
   }
 
   render(){

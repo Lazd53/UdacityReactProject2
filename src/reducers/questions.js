@@ -28,7 +28,7 @@ export function questions (state=[], action) {
 export function currentQuestion (state="", action) {
   switch(action.type) {
     case SET_CURRENT_QUESTION :
-      return action.currentQuestion;
+        return action.currentQuestion;
     default :
       return state;
   }
