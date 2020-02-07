@@ -23,18 +23,19 @@ class QuestionsScreen extends React.Component{
   setQuestion=()=>{
     let {dispatch} = this.props;
     let pathId = this.props.match.params.id;
-    if (pathId !=="/"){
+    if (pathId !== undefined){
       dispatch(setCurrentQuestion(pathId))
     } else {
       dispatch(setCurrentQuestion(this.setFirstQuestion()))
     }
   }
 
-  setFirstQuestion = () =>{
+  setFirstQuestion(){
     let questionArray = Object.values(this.props.questions);
     let questionsAnswered = Object.keys(this.props.authdUser.answers);
     let unansweredQuestions = questionArray.filter(
       question => !questionsAnswered.includes(question.id))
+    console.log(questionArray, unansweredQuestions)
     return unansweredQuestions[0].id;
   }
 
