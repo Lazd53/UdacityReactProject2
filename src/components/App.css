@@ -164,6 +164,11 @@ button:hover, button:focus, .game-mode-selector-link:hover, .game-mode-selector-
 
 }
 
+.game-mode-selector-link.selected {
+  color: white;
+  background-color: var(--primary-color);
+}
+
 /* GAME MODE END */
 
 /* WOULD YOU RATHER CARD START */
@@ -285,6 +290,11 @@ button:hover, button:focus, .game-mode-selector-link:hover, .game-mode-selector-
 
 .questions-list-item::first-letter {
   text-transform: capitalize;
+}
+
+.questions-list-item-selected {
+  color: var(--primary-color);
+  font-weight: bold;
 }
 
 .questions-add-question {
