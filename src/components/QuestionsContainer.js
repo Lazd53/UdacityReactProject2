@@ -2,9 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import QuestionsList from './QuestionsList';
 import QuestionModeButtons from './QuestionModeButtons';
-import { Link } from 'react-router-dom'
-
-
 
 class QuestionsContainer extends React.Component {
   state = {questionsMode: "unansweredQuestions"}
@@ -52,7 +49,6 @@ class QuestionsContainer extends React.Component {
           currentMode={this.state.questionsMode}
          />
          <QuestionsList questions={this.showQuestionsFilter(this.state.questionsMode)} />
-         <Link className="questions-add-question" to="/add">Add a Question</Link>
       </div>
     )
   }

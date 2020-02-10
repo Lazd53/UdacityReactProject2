@@ -3,18 +3,19 @@ import { Link, withRouter } from 'react-router-dom';
 
 class GameModeSelector extends React.Component{
 
-  unClickableLink = (e, thisLocation) => {
-    let {pathName} = this.props.location;
-    if (thisLocation === pathName)
-    e.preventDefault()
-  }
-
   render(){
     let {pathname} = this.props.location;
-    let [questions, leaderboard] = [false, false];
-    pathname === '/Leaderboard' ?
-      leaderboard = true :
-      questions = true;
+    let [questions, leaderboard, add] = [false, false, false];
+    switch(pathname){
+      case "/Leaderboard":
+        leaderboard = true;
+        break;
+      case "/add":
+        add = true;
+        break;
+      default:
+        questions = true;
+    }
 
     return (
       <div className="game-mode-selector">
@@ -37,6 +38,16 @@ class GameModeSelector extends React.Component{
         >
           LeaderBoard
         </Link>
+        <Link
+          className={add ?
+            "game-mode-selector-link selected":
+            "game-mode-selector-link"
+          }
+          to="/add"
+        >
+          Add a Question
+        </Link>
+
       </div>
     )
   }
