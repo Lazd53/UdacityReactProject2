@@ -1,38 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {handleSaveQuestionAnswer} from '../actions/shared';
-
+import WYRQuestion from './WYRQuestion';
+import WYRAnswers from './WYRAnswers';
+import user1 from "../userThumbnails/user1.jpg";
+import user2 from "../userThumbnails/user2.jpg";
+import user3 from "../userThumbnails/user3.jpg";
 
 class WYRCard extends React.Component{
 
-  chooseOption(answer){
-    let {dispatch, authdUser, currentQuestion} = this.props;
-    dispatch(handleSaveQuestionAnswer(authdUser, currentQuestion.id, answer))
-  }
-
   render(){
-    console.log(this.props.currentQuestion);
+    let { answeredQuestions, currentQuestion, questionAuthor } = this.props;
+    let userImgs = {user1, user2, user3};
+    console.log(userImgs[questionAuthor.avatarURL]);
     return(
       <div className="wyr-card">
         <h2>Would you rather...?</h2>
-        {this.props.currentQuestion !== undefined &&
-          <div className="wyr-card-buttons">
-            <button
-              className = "wyr-card-button"
-              onClick={ ()=> this.chooseOption("optionOne")}
-            >
-              {this.props.currentQuestion.optionOne.text}
-            </button>
-            <h3>or</h3>
-            <button
-              className = "wyr-card-button"
-              onClick={ ()=> this.chooseOption("optionTwo")}
-            >
-              {this.props.currentQuestion.optionTwo.text}
-            </button>
-          </div>
+        { answeredQuestions.includes(currentQuestion) ?
+          <WYRAnswers/> :
+          <WYRQuestion/>
         }
-
+        <img
+          className="user-info-img"
+          src={userImgs[questionAuthor.avatarURL]}
+          alt={questionAuthor.name}
+        />
       </div>
     )
   }
@@ -41,5 +32,7 @@ class WYRCard extends React.Component{
 
 export default connect((store) => (
   { authdUser: store.authdUser ,
-    currentQuestion: store.questions[store.currentQuestion]
+    questionAuthor: store.users[store.questions[store.currentQuestion].author],
+    answeredQuestions: Object.keys(store.users[store.authdUser].answers),
+    currentQuestion: store.currentQuestion
   }))(WYRCard);

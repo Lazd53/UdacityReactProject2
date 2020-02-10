@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {handleSaveQuestionAnswer} from '../actions/shared';
+import user1 from "../userThumbnails/user1.jpg";
+import user2 from "../userThumbnails/user2.jpg";
+import user3 from "../userThumbnails/user3.jpg";
 
 class WYRQuestion extends React.Component {
 
@@ -10,24 +13,27 @@ class WYRQuestion extends React.Component {
   }
 
   render(){
-    let { currentQuestion, questions } = this.props;
-    let userImgs = {user1, user2, user3};
+    let { currentQuestion } = this.props;
     return (
       <div className="wyr-card-buttons">
-        <h2 className = "wyr-card-button">
+        <button
+          className = "wyr-card-button"
+          onClick={ ()=> this.chooseOption("optionOne")}
+        >
           {currentQuestion.optionOne.text}
-        </h2>
-        <p> OR </p>
-        <h2 className = "wyr-card-button">
+        </button>
+        <h3>or</h3>
+        <button
+          className = "wyr-card-button"
+          onClick={ ()=> this.chooseOption("optionTwo")}
+        >
           {currentQuestion.optionTwo.text}
-        </h2>
-
+        </button>
       </div>
     )
   }
 }
 
 export default connect ( (store) => ({
-  questions: store.questions,
-  currentQuestion: store.questions[store.currentQuestion]
+  currentQuestion: store.questions[store.currentQuestion],
 }))(WYRQuestion);
