@@ -198,7 +198,7 @@ button:hover, button:focus,
 .wyr-card h2 {
   position: absolute;
   left: 60px;
-  top: 40px;
+  top: 25px;
   margin: 0;
 }
 
@@ -254,6 +254,71 @@ button:hover, button:focus,
 }
 
 /* WOULD YOU RATHER CARD ENDS  */
+/* ANSWERS CARD STARTS */
+
+.wyr-card-answers{
+  display: flex;
+  align-items: center;
+}
+
+.answer-option {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto 80px;
+  width: 250px;
+  height: 200px;
+  border: 2px solid black;
+  background: white;
+  color: black;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 500;
+  box-shadow: 3px 3px 3px 3px rgba(180, 180, 180, 0.5);
+  margin: 0 10px;
+}
+
+.answer-option-title{
+  text-transform: capitalize;
+  margin: 10px 5px;
+}
+
+.answer-option-number {
+  margin: 0;
+}
+
+.answer-option-percent-circle{
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  box-shadow: 2px 2px 2px 2px rgba(180, 180, 180, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+}
+
+.answer-option-percent {
+  font-size: 24px;
+  color: white;
+}
+
+.voted-for {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  top: -40px;
+  left: -1px;
+  border: 2px solid black;
+  border-radius: 5px 15px;
+  box-shadow: 2px 2px 2px 2px rgba(180, 180, 180, 0.5);
+}
+
+.voted-for-text{
+  margin: 0;
+}
+
+/* ANSWERS CARD ENDS */
 /* QUESTIONS CONTAINER STARTS */
 
 .questions-container {
