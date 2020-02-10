@@ -35,7 +35,6 @@ class QuestionsScreen extends React.Component{
     let questionsAnswered = Object.keys(this.props.authdUser.answers);
     let unansweredQuestions = questionArray.filter(
       question => !questionsAnswered.includes(question.id))
-    console.log(questionArray, unansweredQuestions)
     return unansweredQuestions[0].id;
   }
 

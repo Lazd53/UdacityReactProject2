@@ -9,7 +9,6 @@ class QuestionsList extends React.Component {
     return (
       <div className="questions-list">
         {questions.map( question => {
-          console.log( currentQuestionID, question[1].id)
           let linkTo = `/questions/${question[0]}`
           return (
             <Link

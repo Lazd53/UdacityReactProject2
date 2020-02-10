@@ -39,7 +39,6 @@ export function handleSaveQuestionAnswer ( authedUser, qid, answer){
     return (_saveQuestionAnswer({authedUser, qid, answer}))
       .then(() => {
         dispatch(saveQuestionAnswer( authedUser, qid, answer))
-
       })
   }
 }

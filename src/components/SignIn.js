@@ -9,7 +9,6 @@ class SignIn extends React.Component {
 
   changeSetUser = (user) => {
     this.setState({setUser: user[1]})
-    console.log(this.state.setUser)
   }
 
   setAuthdUser = (user) => {
