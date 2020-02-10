@@ -7,6 +7,7 @@ import { setCurrentQuestion } from '../actions/questions';
 
 import WYRCard from './WYRCard';
 import QuestionsContainer from './QuestionsContainer';
+import FoFError from './FoFError';
 
 class QuestionsScreen extends React.Component{
   constructor(props){
@@ -23,7 +24,7 @@ class QuestionsScreen extends React.Component{
   setQuestion=()=>{
     let {dispatch} = this.props;
     let pathId = this.props.match.params.id;
-    if (pathId !== undefined){
+    if (pathId !== undefined && this.doesQuestionExist()){
       dispatch(setCurrentQuestion(pathId))
     } else {
       dispatch(setCurrentQuestion(this.setFirstQuestion()))
@@ -38,11 +39,28 @@ class QuestionsScreen extends React.Component{
     return unansweredQuestions[0].id;
   }
 
+  doesQuestionExist = () => {
+    let { params, path } =  this.props.match;
+    let { questions } = this.props;
+    let idInQuestions = Object.keys(questions).includes(params.id);
+    if ( path === "/questions/:id" && !Object.keys(questions).includes(params.id) ) {
+      return false;
+    }
+    return true;
+  }
+
   render(){
     return (
       <div>
-        <WYRCard/>
-        <QuestionsContainer/>
+        {
+          this.doesQuestionExist() ?
+            <React.Fragment>
+              <WYRCard/>
+              <QuestionsContainer/>
+            </React.Fragment> :
+            <FoFError/>
+        }
+
       </div>
     )
   }

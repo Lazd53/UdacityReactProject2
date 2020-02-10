@@ -9,7 +9,7 @@ import { Route, Switch } from 'react-router-dom';
 
 
 class GameBoard extends React.Component {
-
+  
   render(){
     return (
       <div className="game-board">
