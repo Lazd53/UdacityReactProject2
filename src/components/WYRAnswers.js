@@ -11,7 +11,6 @@ class WYRQuestion extends React.Component {
 
   render(){
     let { currentQuestion, questions } = this.props;
-    let userImgs = {user1, user2, user3};
     return (
       <div className="wyr-card-buttons">
         <h2 className = "wyr-card-button">
