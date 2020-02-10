@@ -6,7 +6,7 @@ const FoFError = (props) => {
     <div className="error-page">
       <h2> We're sorry, that doesn't appear to be a question! </h2>
       <p> Please go back to the home page and try again </p>
-      <Link to="/"> Back to Home </Link>
+      <Link className="error-page-link" to="/"> Back to Home </Link>
     </div>
   )
 }
