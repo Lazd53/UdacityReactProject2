@@ -1,4 +1,4 @@
-import { RECEIVE_DATA, SAVE_ANSWER } from '../actions/shared';
+import { RECEIVE_DATA, SAVE_ANSWER, ADD_QUESTION } from '../actions/shared';
 import { SET_AUTHD_USER, SIGN_OUT_USER } from '../actions/users';
 
 export function users (state=[], action) {
@@ -6,9 +6,25 @@ export function users (state=[], action) {
     case RECEIVE_DATA :
       return action.users;
     case SAVE_ANSWER :
-      let newState = {...state};
-      newState[action.authedUser].answers[action.qid] = action.answer;
-      return newState;
+      let {qid, answer, authedUser} = action;
+      return {...state,
+              [authedUser]: {
+                ...state[authedUser],
+                answers: {
+                  ...state[authedUser].answers,
+                  [qid]: answer
+                }
+              }
+            };
+    case ADD_QUESTION :
+      let {id} = action;
+      let author = action.newQuestion.author
+      return {...state,
+         [author]: {
+           ...state[author],
+           questions: state[author].questions.concat([id])
+         }
+      }
     default :
       return state;
   }
