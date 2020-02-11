@@ -11,11 +11,13 @@ export function questions (state=[], action) {
     case SAVE_ANSWER :
       let {qid, answer, authedUser} = action
       return {...state,
-        ...state[qid],
-          [answer] : {
+        [qid]: {
+          ...state[qid],
+          [answer]: {
             ...state[qid][answer],
-            votes: state[qid][answer].votes.concat(authedUser)
+            votes: state[qid][answer].votes.concat([authedUser])
           }
+        }
       };
     case ADD_QUESTION :
       state[action.id] = action.newQuestion;
