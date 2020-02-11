@@ -1,6 +1,6 @@
 # Would You Rather Project - Alex Love
 
-This is the Would You Rather game app..
+This is the Would You Rather game app.
 
 
 ## How to get started
