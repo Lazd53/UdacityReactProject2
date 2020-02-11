@@ -15,12 +15,23 @@ class AddQuestion extends React.Component{
     this.setState( returnObject )
   }
 
+  stateIsEmpty = () => {
+    let {optionOne, optionTwo} = this.state;
+    if (optionOne === "" || optionTwo === "") {
+      return true};
+    return false;
+  }
+
   updateStore = (e) => {
     let {dispatch, authdUser, history} = this.props
     e.preventDefault();
-    dispatch(setLoading())
-    dispatch(handleAddQuestion(authdUser, this.state.optionOne, this.state.optionTwo))
+    if (this.stateIsEmpty()){
+      alert("Please fill in all fields!")
+    } else {
+      dispatch(setLoading());
+      dispatch(handleAddQuestion(authdUser, this.state.optionOne, this.state.optionTwo))
       .then(() => history.push("/"));
+    }
   }
 
   render(){
@@ -43,13 +54,13 @@ class AddQuestion extends React.Component{
               value={this.state.optionTwo}
               placeholder="Option Two"
               required
-              onChange={ (e)=> {this.updateState("optionTwo", e.target.value ) }}
+              onChange={ (e)=> this.updateState("optionTwo", e.target.value ) }
               >
             </textarea>
             <button
               className="add-question-submit"
               type="submit"
-              onClick={(e) => this.updateStore(e)}>
+              onClick={(e) => {this.updateStore(e)}}>
               Submit!
             </button>
           </form>
