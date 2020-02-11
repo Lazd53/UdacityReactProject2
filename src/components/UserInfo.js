@@ -18,7 +18,7 @@ class UserInfo extends React.Component {
     let userImgs = {user1, user2, user3};
     return (
       <div className="user-info-container">
-        <div>
+        <div className="user-info-text">
           <h4 className="user-info-name">
             {authdUser.name}
           </h4>

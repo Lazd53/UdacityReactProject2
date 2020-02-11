@@ -3,9 +3,10 @@
 }
 
 header {
-  display: grid;
-  grid-template-columns: 20px auto 160px;
-  grid-template-areas: "left-side title login-info";
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--primary-color);
   padding: 0 20px;
   grid-area: header;
@@ -55,9 +56,11 @@ button:hover, button:focus,
 /* USER INFO START */
 
 .user-info-container {
-  grid-area: login-info;
+  position: absolute;
+  right: 8px;
   display: flex;
   height: 100%;
+  width: 120px;
   align-items: center;
   justify-content: flex-end;
 }
@@ -70,12 +73,18 @@ button:hover, button:focus,
   margin-left: 10px;
 }
 
+.user-info-text{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .user-info-name {
   background: none;
   color: white;
   border: none;
   text-align: right;
-  margin: 0;
+  margin: 3px 0;
 }
 
 .user-info-logout {
@@ -84,6 +93,7 @@ button:hover, button:focus,
   font-style: italic;
   font-size: 14px;
   text-align: right;
+  box-shadow: none;
 }
 
 /* USER INFO ENDS  */
@@ -546,6 +556,8 @@ button:hover, button:focus,
   padding: 20px;
   word-wrap: break-word;
   overflow: hidden;
+  resize: none;
+
 }
 
 .App {
