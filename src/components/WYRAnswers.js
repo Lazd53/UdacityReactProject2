@@ -9,7 +9,7 @@ class WYRAnswers extends React.Component {
     let totalVotes = currentQuestion.optionOne.votes.length + currentQuestion.optionTwo.votes.length;
     let percentOptionOne = Math.floor(currentQuestion.optionOne.votes.length / totalVotes * 100);
     let votedForCurrent = authdUser.answers[currentQuestion.id];
-    console.log(votedForCurrent);
+
     return (
       <div className="wyr-card-answers">
         <div className="answer-option">
@@ -20,7 +20,10 @@ class WYRAnswers extends React.Component {
               <p className="answer-option-percent">{percentOptionOne}%</p>
             </div>
           }
-          {votedForCurrent === "optionOne" && <div className="votedFor"><p>You voted for this one!</p></div>}
+          {votedForCurrent === "optionOne" &&
+            <div className="voted-for">
+              <p className="voted-for-text">You voted for this one!</p>
+            </div>}
         </div>
         <h4> OR </h4>
         <div className="answer-option">
