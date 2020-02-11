@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {handleSaveQuestionAnswer} from '../actions/shared';
-import user1 from "../userThumbnails/user1.jpg";
-import user2 from "../userThumbnails/user2.jpg";
-import user3 from "../userThumbnails/user3.jpg";
 
 class WYRQuestion extends React.Component {
 
@@ -36,4 +33,5 @@ class WYRQuestion extends React.Component {
 
 export default connect ( (store) => ({
   currentQuestion: store.questions[store.currentQuestion],
+  authdUser: store.authdUser
 }))(WYRQuestion);

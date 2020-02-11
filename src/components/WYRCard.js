@@ -11,7 +11,6 @@ class WYRCard extends React.Component{
   render(){
     let { answeredQuestions, currentQuestion, questionAuthor } = this.props;
     let userImgs = {user1, user2, user3};
-    console.log(userImgs[questionAuthor.avatarURL]);
     return(
       <div className="wyr-card">
         <h2>Would you rather...?</h2>

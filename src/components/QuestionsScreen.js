@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { handleSaveQuestionAnswer } from '../actions/shared';
 import { setCurrentQuestion } from '../actions/questions';
 
 import WYRCard from './WYRCard';
@@ -42,7 +41,8 @@ class QuestionsScreen extends React.Component{
   doesQuestionExist = () => {
     let { params, path } =  this.props.match;
     let { questions } = this.props;
-    let idInQuestions = Object.keys(questions).includes(params.id);
+    //  if path "/questions/:id" and
+    // questions object does not have a question with that id
     if ( path === "/questions/:id" && !Object.keys(questions).includes(params.id) ) {
       return false;
     }

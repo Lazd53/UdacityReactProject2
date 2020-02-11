@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {handleSaveQuestionAnswer} from '../actions/shared';
 
 class WYRAnswers extends React.Component {
 
   render(){
-    let { currentQuestion, questions, authdUser } = this.props;
+    let { currentQuestion, authdUser } = this.props;
     let totalVotes = currentQuestion.optionOne.votes.length + currentQuestion.optionTwo.votes.length;
     let percentOptionOne = Math.floor(currentQuestion.optionOne.votes.length / totalVotes * 100);
     let votedForCurrent = authdUser.answers[currentQuestion.id];

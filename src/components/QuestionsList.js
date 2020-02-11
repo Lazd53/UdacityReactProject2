@@ -12,7 +12,7 @@ class QuestionsList extends React.Component {
           let linkTo = `/questions/${question[0]}`
           return (
             <Link
-              className={ currentQuestionID == question[1].id ?
+              className={ currentQuestionID === question[1].id ?
                 "questions-list-item-selected questions-list-item" :
                 "questions-list-item"
               }
